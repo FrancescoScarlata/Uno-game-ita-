@@ -87,7 +87,13 @@ public class Music extends Thread
 
 	private File[] getTracks()
 	{
-	 	File dir = new File(System.getProperty("user.dir") + "\\music");
+		// We need the file in the music folder
+		String dirPath= System.getProperty("user.dir");
+		//System.out.println("dir: "+dirPath.substring(0,dirPath.length()-4) + "\\music");
+		// To check if the cwd is in src or in Uno_ita
+	 	File dir = new File(dirPath.substring(0,dirPath.length()-4) + "\\music");
+		if(!dir.exists())
+			dir= new File(dirPath + "\\music");
 	 	File[] a = dir.listFiles();
 	 	ArrayList<File> list = new ArrayList<File>();
 	 	for (File f : a)
